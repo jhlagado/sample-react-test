@@ -11,13 +11,13 @@ test("renders the correct content", () => {
   getByText("Add #1");
 });
 
-x test("Allow users to add items to their list", () => {
+test("Allow users to add items to their list", () => {
   const { getByText, getByLabelText } = render(<App />);
 
   const input = getByLabelText("What needs to be done?");
-  fireEvent.change(input, {target:{value: "RTL Presentaion Slides"}});
+  fireEvent.change(input, { target: { value: "RTL Presentaion Slides" } });
   fireEvent.click(getByText("Add #1"));
 
-  getByText("RTL Presentaion Sl ides");
+  getByText("RTL Presentaion Slides");
   getByText("Add #2");
 });

@@ -1,4 +1,5 @@
-import React from "react";
+import * as React from "react";
+import { api } from "./api";
 import "./styles.css";
 
 export const App = () => {
@@ -19,8 +20,10 @@ export const App = () => {
       id: Date.now()
     };
 
-    setText("");
-    setItems(items.concat(newItem));
+    api.createItem("/items", newItem).then((persistedItem) => {
+      setText("");
+      setItems(items.concat(persistedItem));
+    });
   };
 
   return (

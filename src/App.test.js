@@ -1,15 +1,12 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { render } from "@testing-library/react";
 
 import { App } from "./App";
 
-test("it works", () => {
-  const root = document.createElement("div");
-  ReactDOM.render(<App />, root);
+test("renders the correct content", () => {
+  const { getByText, getByLabelText } = render(<App />);
 
-  expect(root.querySelector("h1").textContent).toBe("TODOS");
-  expect(root.querySelector("label").textContent).toBe(
-    "What needs to be done?"
-  );
-  expect(root.querySelector("button").textContent).toBe("Add #1");
+  getByText("TODOS");
+  getByLabelText("What needs to be done?");
+  getByText("Add #1");
 });

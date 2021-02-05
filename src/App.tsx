@@ -2,13 +2,18 @@ import * as React from "react";
 import { api } from "./api";
 import "./styles.css";
 
+interface Item {
+  id: string;
+  text: string;
+}
+
 export const App = () => {
-  const [items, setItems] = React.useState([]);
+  const [items, setItems] = React.useState<Item[]>([]);
   const [text, setText] = React.useState("");
 
-  const handleChange = (e) => setText(e.target.value);
+  const handleChange = (e: any) => setText(e.target.value);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
 
     if (!text.length) {
@@ -17,7 +22,7 @@ export const App = () => {
 
     const newItem = {
       text,
-      id: Date.now()
+      id: Date.now(),
     };
 
     api.createItem("/items", newItem).then((persistedItem) => {

@@ -1,2 +1,4 @@
-# sample-react-test
-Created with CodeSandbox
+# ts sample
+## sub heading
+
+Simple TS sample
